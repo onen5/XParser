@@ -1,0 +1,8 @@
+.history/
+.vscode/
+
+bazel-bin
+bazel-out
+bazel-testlogs
+bazel-xparser
+

@@ -1,0 +1,51 @@
+<calendar>
+    <name>Example 1</name>
+    <description>Portional example of a Microsoft calendar</description>
+    <weekdays>
+        <weekday>
+            <daytype>2</daytype>
+            <working-times>
+                <working-time>
+                    <from-time>900</from-time>
+                    <to-time>1700</to-time>
+                </working-time>
+            </working-times>
+        </weekday>
+        <weekday>
+            <daytype>3</daytype>
+            <working-times>
+                <working-time>
+                    <from-time>1400</from-time>
+                    <to-time>1700</to-time>
+                </working-time>
+            </working-times>
+        </weekday>
+        <weekday>
+            <daytype>4</daytype>
+            <working-times>
+                <working-time>
+                    <from-time>900</from-time>
+                    <to-time>1700</to-time>
+                </working-time>
+            </working-times>
+        </weekday>
+        <weekday>
+            <daytype>5</daytype>
+            <working-times>
+                <working-time>
+                    <from-time>1000</from-time>
+                    <to-time>1200</to-time>
+                </working-time>
+            </working-times>
+        </weekday>
+        <weekday>
+            <daytype>6</daytype>
+            <working-times>
+                <working-time>
+                    <from-time>930</from-time>
+                    <to-time>1730</to-time>
+                </working-time>
+            </working-times>
+        </weekday>
+    </weekdays>
+</calendar>
