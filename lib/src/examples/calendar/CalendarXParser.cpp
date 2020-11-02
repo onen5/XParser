@@ -76,7 +76,15 @@ CalendarXParser::CalendarXParser(const string& fileName) :
     addStartTagHandler( "weekday", [this] ()
         {
             cout << "processing push weekday" << endl;
-            mObjStack.push_back( mCalPtr->addWeekday() );
+
+            if(inUserHandler()) {
+                auto weekday = make_shared<Weekday>();
+                mObjStack.push_back(weekday.get());
+                setUserHandlerObject( move(weekday) );
+            }
+            else {
+                mObjStack.push_back( mCalPtr->addWeekday() );
+            }
         }
     );
 
