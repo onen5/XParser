@@ -15,6 +15,13 @@ A modern wrapper around that which is libxml.  Created mostly at a time when not
     bazel build //lib/xparser
     ```
 
+## Test
+1. Run
+    ```
+    bazel test test:xparser-test
+    ```
+
+
 ## Example
 You can build a test example
 

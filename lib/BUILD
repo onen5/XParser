@@ -27,5 +27,5 @@ cc_library(
         "-Wunreachable-code",
     ],
     strip_include_prefix = "/lib/inc",
-    visibility = ["//main:__pkg__"],
+    visibility = ["//main:__pkg__", "//test:__pkg__"],
 )
