@@ -12,7 +12,7 @@ A modern wrapper around that which is libxml.  Created mostly at a time when not
 
 1. Run
     ```
-    bazel build //lib/xparser
+    bazel build //lib:xparser
     ```
 
 ## Test
