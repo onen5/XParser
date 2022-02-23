@@ -6,7 +6,7 @@ A modern wrapper around that which is libxml.  Created mostly at a time when not
 1. libmxl2,  *see [www.xmlsoft.org](http://www.xmlsoft.org/)
 
 ## Setup
-1. Install all dependecies on your machine.  If you're planning to localize the shared libraries, then please note that you're going to need to udate the bazel `BUILD` files.
+1. Install all dependecies on your machine.  If you're planning to localize the shared libraries, then please note that you're going to need to update the bazel `BUILD` files.
 
 1. Install Bazel [bazel.build](https://bazel.build/)
 
