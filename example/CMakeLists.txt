@@ -9,16 +9,19 @@ if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 8.1.0)
         message(FATAL_ERROR "GCC version must be at least 8.1.0!  You are on (${CMAKE_CXX_COMPILER_ID}) v(${CMAKE_CXX_COMPILER_VERSION})")
     endif()
-elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
-    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 13.0.0)
-        message(FATAL_ERROR "Clang version must be at least 13.0.0!  You are on (${CMAKE_CXX_COMPILER_ID}) v(${CMAKE_CXX_COMPILER_VERSION})")
-    endif()
+# elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
+#     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 13.0.0)
+#         message(FATAL_ERROR "Clang version must be at least 13.0.0!  You are on (${CMAKE_CXX_COMPILER_ID}) v(${CMAKE_CXX_COMPILER_VERSION})")
+#     endif()
 else()
     message(WARNING "You are using an unsupported compiler! Compilation has only been tested with Clang and GCC.")
 endif()
 
 include_directories("${CMAKE_SOURCE_DIR}/../lib/inc")
 include_directories("inc")
+
+link_directories("${CMAKE_SOURCE_DIR}/../lib/_build")
+# target_link_libraries(xparser xparser)
 
 file(
     GLOB_RECURSE
@@ -34,9 +37,7 @@ if(UNIX)
     add_compile_options(
         -g,
     )
-    set(CMAKE_SHARED_LINKER_FLAGS "-lxml2 -L../lib/_build -lxparser")
-# else()
-#     add_compile_options(/W4 /WX)
+    set(CMAKE_EXE_LINKER_FLAGS "-lxml2 -lxparser")
 endif()
 
 macro(print_all_variables)
