@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.14)
 
 # set the project name
-project(XParser VERSION 1.0)
+project(XParser VERSION 0.0.2)
 
 set(CMAKE_CXX_STANDARD 17)
 
@@ -56,13 +56,11 @@ endif()
 # add libary
 add_library(xparser SHARED ${xparser_src})
 
-macro(print_all_variables)
-    message(STATUS "xparser_src=${xparser_src}")
-    message(STATUS "CMAKE_SOURCE_DIR=${CMAKE_SOURCE_DIR}")
-    message(STATUS "CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}")
-    message(STATUS "CMAKE_CXX_COMPILER_VERSION=${CMAKE_CXX_COMPILER_VERSION}")
-endmacro()
-print_all_variables()
+# macro(print_all_variables)
+#     message(STATUS "xparser_src=${xparser_src}")
+#     message(STATUS "CMAKE_SOURCE_DIR=${CMAKE_SOURCE_DIR}")
+#     message(STATUS "CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}")
+#     message(STATUS "CMAKE_CXX_COMPILER_VERSION=${CMAKE_CXX_COMPILER_VERSION}")
+# endmacro()
+# print_all_variables()
 
-#-DCMAKE_CXX_FLAGS=-isystem\ /path/to/my/include
-# -E env LDFLAGS="-lxml2"

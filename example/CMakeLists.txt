@@ -21,7 +21,6 @@ include_directories("${CMAKE_SOURCE_DIR}/../lib/inc")
 include_directories("inc")
 
 link_directories("${CMAKE_SOURCE_DIR}/../lib/_build")
-# target_link_libraries(xparser xparser)
 
 file(
     GLOB_RECURSE
@@ -40,10 +39,10 @@ if(UNIX)
     set(CMAKE_EXE_LINKER_FLAGS "-lxml2 -lxparser")
 endif()
 
-macro(print_all_variables)
-    message(STATUS "example_src=${example_src}")
-    message(STATUS "CMAKE_SOURCE_DIR=${CMAKE_SOURCE_DIR}")
-    message(STATUS "CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}")
-    message(STATUS "CMAKE_CXX_COMPILER_VERSION=${CMAKE_CXX_COMPILER_VERSION}")
-endmacro()
-print_all_variables()
+# macro(print_all_variables)
+#     message(STATUS "example_src=${example_src}")
+#     message(STATUS "CMAKE_SOURCE_DIR=${CMAKE_SOURCE_DIR}")
+#     message(STATUS "CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}")
+#     message(STATUS "CMAKE_CXX_COMPILER_VERSION=${CMAKE_CXX_COMPILER_VERSION}")
+# endmacro()
+# print_all_variables()
