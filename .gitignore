@@ -1,6 +1,8 @@
 .history/
 .vscode/
 
+_build/
+
 bazel-bin
 bazel-out
 bazel-testlogs

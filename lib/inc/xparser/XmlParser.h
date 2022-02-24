@@ -26,7 +26,7 @@
     xml_ss << MESSAGE;\
     throw xparser::ParserException(xml_ss.str());
 
-typedef std::unordered_map<std::string, std::unique_ptr<std::string>> xParserAttribMap;
+typedef std::unordered_map< std::string, std::unique_ptr<std::string> > xParserAttribMap;
 
 namespace xparser {
 
@@ -160,7 +160,7 @@ private:
 
     /***** DOM processing *****/
     std::unique_ptr<std::string> getStringPtr(const xmlChar*) const;
-    std::unordered_map<std::string, std::function<void (xmlNode*)>> handlerMap;
+    std::unordered_map< std::string, std::function<void (xmlNode*)> > handlerMap;
 
     /***** SAX processing *****/
     std::string mDomain; // domain of the parser (ie CalendarXParser)
@@ -168,10 +168,10 @@ private:
     bool bInUserHandler;
 
     // Domain->Tag->Function
-    static std::unordered_map< std::string, std::unordered_map<std::string, std::function<void()>> > endHandlerMap;
-    static std::unordered_map< std::string, std::unordered_map<std::string, std::function<void()>> > startHandlerMap;
+    static std::unordered_map< std::string, std::unordered_map< std::string, std::function<void()> > > endHandlerMap;
+    static std::unordered_map< std::string, std::unordered_map< std::string, std::function<void()> > > startHandlerMap;
 
-    static std::unordered_map< std::string, std::unordered_map<std::string, std::function<void(void*)>> > userHandlerMap;
+    static std::unordered_map< std::string, std::unordered_map< std::string, std::function<void(void*)> > > userHandlerMap;
 
     void make_sax_handler(xmlSAXHandler* saxHandler);
 

@@ -22,9 +22,9 @@ namespace xparser {
 /*
  * Public Methods
  */
-unordered_map< string, unordered_map<string, function<void()>> > XmlParser::endHandlerMap;
-unordered_map< string, unordered_map<string, function<void()>> > XmlParser::startHandlerMap;
-unordered_map< string, unordered_map<string, function<void(void*)>> > XmlParser::userHandlerMap;
+unordered_map< string, unordered_map< string, function<void()> > > XmlParser::endHandlerMap;
+unordered_map< string, unordered_map< string, function<void()> > > XmlParser::startHandlerMap;
+unordered_map< string, unordered_map< string, function<void(void*)> > > XmlParser::userHandlerMap;
 
 XmlParser::XmlParser(const string& filename) :
     bUseDom( false ),
