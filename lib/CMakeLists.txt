@@ -56,6 +56,9 @@ endif()
 # add libary
 add_library(xparser SHARED ${xparser_src})
 
+# install target
+install(TARGETS xparser)
+
 # macro(print_all_variables)
 #     message(STATUS "xparser_src=${xparser_src}")
 #     message(STATUS "CMAKE_SOURCE_DIR=${CMAKE_SOURCE_DIR}")

@@ -23,9 +23,15 @@ A modern wrapper around that which is libxml2.  Created mostly at a time when no
     cd lib && cmake -S . -B ./_build -DCMAKE_CXX_FLAGS="-isystem <path to libxml2>/include/libxml2" -DCMAKE_CXX_COMPILER=<path to g++>/bin/g++
     ```
 
+    Other options to pass may include
+
+    > `-DCMAKE_CXX_STANDARD=17`
+    
+    > `-DCMAKE_INSTALL_PREFIX=<path to where you want the SO file to go>`
+
 1. Build the library
     ```
-    cd _build && make && cd ..
+    cd lib && cmake --build ./_build --parallel 2 --target install
     ```
 
 This is all that is required to build the Shared library.  The SO can be found in `_build/`.
