@@ -25,6 +25,12 @@ file(
     src/**/*.cpp
 )
 
+file(
+    GLOB_RECURSE
+    xparser_hdr
+    inc/**/*.h
+)
+
 set(OPT0FLAG "-O0")
 set(OPT1FLAG "-O1")
 set(OPT2FLAG "-O2")
@@ -57,13 +63,20 @@ endif()
 add_library(xparser SHARED ${xparser_src})
 
 # install target
-install(TARGETS xparser)
+if ("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+	install(TARGETS xparser DESTINATION lib64)
+else()
+	install(TARGETS xparser DESTINATION lib)
+endif()
+install(FILES ${xparser_hdr} DESTINATION include)
 
-# macro(print_all_variables)
-#     message(STATUS "xparser_src=${xparser_src}")
-#     message(STATUS "CMAKE_SOURCE_DIR=${CMAKE_SOURCE_DIR}")
-#     message(STATUS "CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}")
-#     message(STATUS "CMAKE_CXX_COMPILER_VERSION=${CMAKE_CXX_COMPILER_VERSION}")
-# endmacro()
-# print_all_variables()
+macro(print_all_variables)
+    message(STATUS "xparser_src=${xparser_src}")
+    message(STATUS "xparser_hdr=${xparser_hdr}")
+    message(STATUS "CMAKE_SOURCE_DIR=${CMAKE_SOURCE_DIR}")
+    message(STATUS "CMAKE_CXX_COMPILER_ID=${CMAKE_CXX_COMPILER_ID}")
+    message(STATUS "CMAKE_CXX_COMPILER_VERSION=${CMAKE_CXX_COMPILER_VERSION}")
+    message(STATUS "CMAKE_SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}")
+endmacro()
+print_all_variables()
 
