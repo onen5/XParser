@@ -68,7 +68,7 @@ if ("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
 else()
 	install(TARGETS xparser DESTINATION lib)
 endif()
-install(FILES ${xparser_hdr} DESTINATION include)
+install(FILES ${xparser_hdr} DESTINATION include/xparser)
 
 macro(print_all_variables)
     message(STATUS "xparser_src=${xparser_src}")
