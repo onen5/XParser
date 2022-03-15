@@ -20,9 +20,9 @@ namespace xparser {
 class ParserException: public std::exception {
 
 public:
-    ParserException(const std::string& what) {
-        mWhat = what;
-    }
+    ParserException(const std::string& what):
+        mWhat(what)
+    {}
 
     virtual const char* what() const throw()
     {
