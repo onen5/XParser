@@ -18,27 +18,24 @@
 
 // project includes - alphabetical order
 
+namespace examples::calendar {
 
-namespace examples { namespace calendar {
-
-class Weekday : public BaseInterface {
-
-public:
+class Weekday: public BaseInterface {
+  public:
     Weekday();
     virtual ~Weekday();
 
     uint8_t getDayType() const;
-    const std::vector< std::unique_ptr<WorkingTime> >& getWorkingTimes() const;
+    const std::vector< std::unique_ptr< WorkingTime > >& getWorkingTimes() const;
 
-    void setDayType(uint8_t type);
+    void setDayType( uint8_t type );
     WorkingTime* addWorkingTime();
 
-private:
+  private:
     uint8_t mDayType;
-    std::vector< std::unique_ptr<WorkingTime> > mWorkingTimes;
-
+    std::vector< std::unique_ptr< WorkingTime > > mWorkingTimes;
 };
 
-} }
+}  // namespace examples::calendar
 
 #endif /* __EXAMPLES_CALENDAR_WEEKDAY__ */

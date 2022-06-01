@@ -16,16 +16,14 @@
 namespace examples {
 
 class BaseInterface {
-
-public:
+  public:
     virtual ~BaseInterface() {};
 
-protected:
+  protected:
 
-private:
-
+  private:
 };
 
-}
+}  // namespace examples
 
 #endif /* __EXAMPLES_BASEINTERFACE_H__ */

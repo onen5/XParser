@@ -19,31 +19,35 @@
 
 using namespace std;
 
-namespace examples { namespace calendar {
+namespace examples::calendar {
 
 Weekday::Weekday() :
-    mDayType(0),
+    mDayType( 0 ),
     mWorkingTimes()
 {
-}   
+}
 
-Weekday::~Weekday() {}
+Weekday::~Weekday() { }
 
-uint8_t Weekday::getDayType() const {
+uint8_t Weekday::getDayType() const
+{
     return mDayType;
 }
 
-const vector< unique_ptr<WorkingTime> >& Weekday::getWorkingTimes() const {
+const vector< unique_ptr< WorkingTime > >& Weekday::getWorkingTimes() const
+{
     return mWorkingTimes;
 }
 
-void Weekday::setDayType(uint8_t type) {
+void Weekday::setDayType( uint8_t type )
+{
     mDayType = type;
 }
 
-WorkingTime* Weekday::addWorkingTime() {
+WorkingTime* Weekday::addWorkingTime()
+{
     mWorkingTimes.emplace_back( new WorkingTime() );
     return mWorkingTimes.back().get();
 }
 
-} }
+}  // namespace examples::calendar

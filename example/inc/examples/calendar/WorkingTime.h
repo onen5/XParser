@@ -15,28 +15,24 @@
 
 // project includes - alphabetical order
 
+namespace examples::calendar {
 
-namespace examples { namespace calendar {
-
-class WorkingTime : public BaseInterface {
-
-public:
+class WorkingTime: public BaseInterface {
+  public:
     WorkingTime();
     virtual ~WorkingTime();
 
     uint16_t getFromTime() const;
     uint16_t getToTime() const;
 
-    void setFromTime(uint16_t time);
-    void setToTime(uint16_t time);
+    void setFromTime( uint16_t time );
+    void setToTime( uint16_t time );
 
-private:
-
+  private:
     uint16_t mFromTime;
     uint16_t mToTime;
-
 };
 
-} }
+}  // namespace examples::calendar
 
 #endif /* __EXAMPLES_CALENDAR_WORKINGTIME__ */

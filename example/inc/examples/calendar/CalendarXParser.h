@@ -5,7 +5,6 @@
 #ifndef __EXAMPLES_CALENDAR_XPARSER_H__
 #define __EXAMPLES_CALENDAR_XPARSER_H__
 
-
 // system includes
 #include <string>
 #include <unordered_map>
@@ -20,22 +19,21 @@
 
 // project includes - alphabetical order
 
-namespace examples { namespace calendar {
+namespace examples::calendar {
 
 class CalendarXParser: public xparser::XmlParser {
-
-public:
+  public:
     CalendarXParser();
-    CalendarXParser(const std::string&);
+    CalendarXParser( const std::string& );
 
-    void setCalendar(Calendar*);
+    void setCalendar( Calendar* );
 
-private:
+  private:
     Calendar* mCalPtr;
 
-    std::vector<BaseInterface*> mObjStack;
+    std::vector< BaseInterface* > mObjStack;
 };
 
-} }
+}  // namespace examples::calendar
 
 #endif /* __EXAMPLES_CALENDAR_XPARSER_H__ */

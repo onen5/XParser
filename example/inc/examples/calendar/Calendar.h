@@ -18,34 +18,30 @@
 
 // project includes - alphabetical order
 
+namespace examples::calendar {
 
-namespace examples { namespace calendar {
-
-class Calendar : public BaseInterface {
-
-public:
+class Calendar: public BaseInterface {
+  public:
     Calendar();
     virtual ~Calendar();
 
     const std::string& getName() const;
     const std::string& getDescription() const;
 
-    const std::vector< std::unique_ptr<Weekday> >& getWeekdays() const;
+    const std::vector< std::unique_ptr< Weekday > >& getWeekdays() const;
 
-    void setName(const std::string& name);
-    void setDescription(const std::string& desc);
+    void setName( const std::string& name );
+    void setDescription( const std::string& desc );
 
     Weekday* addWeekday();
 
-private:
-
+  private:
     std::string mName;
     std::string mDescription;
 
-    std::vector< std::unique_ptr<Weekday> > mWeekdays;
-
+    std::vector< std::unique_ptr< Weekday > > mWeekdays;
 };
 
-} }
+}  // namespace examples::calendar
 
 #endif /* __EXAMPLES_CALENDAR_CALENDAR__ */

@@ -18,23 +18,21 @@
 namespace xparser {
 
 class ParserException: public std::exception {
-
-public:
-    ParserException(const std::string& what):
-        mWhat(what)
-    {}
+  public:
+    ParserException( const std::string& what ) :
+        mWhat( what )
+    {
+    }
 
     virtual const char* what() const throw()
     {
-      return mWhat.c_str();
+        return mWhat.c_str();
     }
 
-private:
+  private:
     std::string mWhat;
-
 };
 
-}
+}  // namespace xparser
 
 #endif /* __XPARSER_PARSEREXCEPTION_H__ */
-

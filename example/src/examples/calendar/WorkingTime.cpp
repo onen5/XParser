@@ -19,30 +19,34 @@
 
 using namespace std;
 
-namespace examples { namespace calendar {
+namespace examples::calendar {
 
 WorkingTime::WorkingTime() :
-    mFromTime(1010),
-    mToTime(1101)
+    mFromTime( 1010 ),
+    mToTime( 1101 )
 {
-}   
+}
 
-WorkingTime::~WorkingTime() {}
+WorkingTime::~WorkingTime() { }
 
-uint16_t WorkingTime::getFromTime() const {
+uint16_t WorkingTime::getFromTime() const
+{
     return mFromTime;
 }
 
-uint16_t WorkingTime::getToTime() const {
+uint16_t WorkingTime::getToTime() const
+{
     return mToTime;
 }
 
-void WorkingTime::setFromTime(uint16_t time) {
+void WorkingTime::setFromTime( uint16_t time )
+{
     mFromTime = time;
 }
 
-void WorkingTime::setToTime(uint16_t time) {
+void WorkingTime::setToTime( uint16_t time )
+{
     mToTime = time;
 }
 
-} }
+}  // namespace examples::calendar

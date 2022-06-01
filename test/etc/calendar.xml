@@ -1,7 +1,7 @@
 <calendar>
     <name>Example 1</name>
     <description>Portional example of a Microsoft calendar</description>
-    <weekdays>
+    <weekdays example-attrib="Sample Attribute">
         <weekday>
             <daytype>2</daytype>
             <working-times>

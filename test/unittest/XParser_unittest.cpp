@@ -1,10 +1,11 @@
 
-#include "gtest/gtest.h"
-
 #include <sstream>
+
+#include "gtest/gtest.h"
 
 using namespace std;
 
-TEST(XParser, BasicTest) {
-    EXPECT_STREQ("GOT LAZY", "GOT LAZY");
+TEST( XParser, BasicTest )
+{
+    EXPECT_STREQ( "GOT LAZY", "GOT LAZY" );
 }
