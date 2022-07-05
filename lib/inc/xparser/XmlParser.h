@@ -87,6 +87,7 @@ class XmlParser {
     bool getBoolAttrib( const std::string& attrib ) const;
     bool getBoolAttrib( const std::string& attrib, bool defaultValue ) const;
     float getFloatAttrib( const std::string& attrib ) const;
+    float getFloatAttrib( const std::string& attrib, float defaultValue ) const;
 
     uint16_t getUint16Attrib( const std::string& attrib ) const;
     uint32_t getUint32Attrib( const std::string& attrib ) const;

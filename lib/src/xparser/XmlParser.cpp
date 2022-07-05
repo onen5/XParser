@@ -181,6 +181,15 @@ float XmlParser::getFloatAttrib( const string& attrib ) const
     return getFloat( mCurrAttribs[ attrib ].get() );
 }
 
+float XmlParser::getFloatAttrib( const string& attrib, float defaultValue ) const
+{
+    auto entry = mCurrAttribs.find( attrib );
+    if ( entry == mCurrAttribs.end() ) {
+        return defaultValue;
+    }
+    return getFloat( entry->second );
+}
+
 float XmlParser::getFloat( const xmlChar* number ) const
 {
     return getFloat( getStringPtr( number ).get() );
