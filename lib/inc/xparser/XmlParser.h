@@ -90,12 +90,18 @@ class XmlParser {
     float getFloatAttrib( const std::string& attrib, float defaultValue ) const;
 
     uint16_t getUint16Attrib( const std::string& attrib ) const;
+    uint16_t getUint16Attrib( const std::string& attrib, uint16_t defaultValue ) const;
     uint32_t getUint32Attrib( const std::string& attrib ) const;
+    uint32_t getUint32Attrib( const std::string& attrib, uint32_t defaultValue ) const;
     uint64_t getUint64Attrib( const std::string& attrib ) const;
+    uint64_t getUint64Attrib( const std::string& attrib, uint64_t defaultValue ) const;
 
     uint16_t getUint16HexAttrib( const std::string& attrib ) const;
+    uint16_t getUint16HexAttrib( const std::string& attrib, uint16_t defaultValue ) const;
     uint32_t getUint32HexAttrib( const std::string& attrib ) const;
+    uint32_t getUint32HexAttrib( const std::string& attrib, uint32_t defaultValue ) const;
     uint64_t getUint64HexAttrib( const std::string& attrib ) const;
+    uint64_t getUint64HexAttrib( const std::string& attrib, uint64_t defaultValue ) const;
 
     void getUint128HexAttrib( const std::string& attrib, uint64_t& val1, uint64_t& val2 );
 

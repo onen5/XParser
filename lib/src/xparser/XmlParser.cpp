@@ -214,6 +214,15 @@ uint16_t XmlParser::getUint16Attrib( const string& attrib ) const
     return getUint16( mCurrAttribs[ attrib ].get() );
 }
 
+uint16_t XmlParser::getUint16Attrib( const string& attrib, uint16_t defaultValue ) const
+{
+    auto entry = mCurrAttribs.find( attrib );
+    if ( entry == mCurrAttribs.end() ) {
+        return defaultValue;
+    }
+    return getUint16( entry->second );
+}
+
 uint16_t XmlParser::getUint16( const xmlChar* number ) const
 {
     return getUint16( getStringPtr( number ).get() );
@@ -235,6 +244,15 @@ uint16_t XmlParser::getUint16( const string* str ) const
 uint32_t XmlParser::getUint32Attrib( const string& attrib ) const
 {
     return getUint32( mCurrAttribs[ attrib ].get() );
+}
+
+uint32_t XmlParser::getUint32Attrib( const string& attrib, uint32_t defaultValue ) const
+{
+    auto entry = mCurrAttribs.find( attrib );
+    if ( entry == mCurrAttribs.end() ) {
+        return defaultValue;
+    }
+    return getUint32( entry->second );
 }
 
 uint32_t XmlParser::getUint32( const xmlChar* number ) const
@@ -260,6 +278,15 @@ uint64_t XmlParser::getUint64Attrib( const string& attrib ) const
     return getUint64( mCurrAttribs[ attrib ].get() );
 }
 
+uint64_t XmlParser::getUint64Attrib( const string& attrib, uint64_t defaultValue ) const
+{
+    auto entry = mCurrAttribs.find( attrib );
+    if ( entry == mCurrAttribs.end() ) {
+        return defaultValue;
+    }
+    return getUint64( entry->second );
+}
+
 uint64_t XmlParser::getUint64( const xmlChar* number ) const
 {
     return getUint64( getStringPtr( number ).get() );
@@ -281,6 +308,15 @@ uint64_t XmlParser::getUint64( const string* str ) const
 uint16_t XmlParser::getUint16HexAttrib( const string& attrib ) const
 {
     return getUint16Hex( mCurrAttribs[ attrib ].get() );
+}
+
+uint16_t XmlParser::getUint16HexAttrib( const string& attrib, uint16_t defaultValue ) const
+{
+    auto entry = mCurrAttribs.find( attrib );
+    if ( entry == mCurrAttribs.end() ) {
+        return defaultValue;
+    }
+    return getUint16Hex( entry->second );
 }
 
 uint16_t XmlParser::getUint16Hex( const xmlChar* number ) const
@@ -306,6 +342,15 @@ uint32_t XmlParser::getUint32HexAttrib( const string& attrib ) const
     return getUint32Hex( mCurrAttribs[ attrib ].get() );
 }
 
+uint32_t XmlParser::getUint32HexAttrib( const string& attrib, uint32_t defaultValue ) const
+{
+    auto entry = mCurrAttribs.find( attrib );
+    if ( entry == mCurrAttribs.end() ) {
+        return defaultValue;
+    }
+    return getUint32Hex( entry->second );
+}
+
 uint32_t XmlParser::getUint32Hex( const xmlChar* number ) const
 {
     return getUint32Hex( getStringPtr( number ).get() );
@@ -327,6 +372,15 @@ uint32_t XmlParser::getUint32Hex( const string* str ) const
 uint64_t XmlParser::getUint64HexAttrib( const string& attrib ) const
 {
     return getUint64Hex( mCurrAttribs[ attrib ].get() );
+}
+
+uint64_t XmlParser::getUint64HexAttrib( const string& attrib, uint64_t defaultValue ) const
+{
+    auto entry = mCurrAttribs.find( attrib );
+    if ( entry == mCurrAttribs.end() ) {
+        return defaultValue;
+    }
+    return getUint64Hex( entry->second );
 }
 
 uint64_t XmlParser::getUint64Hex( const xmlChar* number ) const
