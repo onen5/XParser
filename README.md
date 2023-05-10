@@ -10,7 +10,7 @@ A modern wrapper around that which is libxml2.  Created mostly at a time when no
 1. Install GCC 8.1 (or later) *see [gcc.gnu.org](https://gcc.gnu.org/)
 
 ## Setup
-1. Install all dependecies on your machine. 
+1. Install all dependecies on your machine.
 
 1. Build the Makefile
     ```
@@ -26,7 +26,7 @@ A modern wrapper around that which is libxml2.  Created mostly at a time when no
     Other options to pass may include
 
     > `-DCMAKE_CXX_STANDARD=17`
-    
+
     > `-DCMAKE_INSTALL_PREFIX=<path to where you want the SO file to go>`
 
 1. Build the library
@@ -60,3 +60,5 @@ You can build a test example
     ```
     LD_LIBRARY_PATH=../lib/_build:${LD_LIBRARY_PATH} ./_build/calendar-example ../test/etc/calendar.xml
     ```
+
+    *DYLD_LIBRARY_PATH, used with macos
