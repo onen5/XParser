@@ -433,7 +433,7 @@ void XmlParser::getUint128Hex( const string* str, uint64_t& val1, uint64_t& val2
 
 const string* XmlParser::getContent( xmlNode* nodePtr ) const
 {
-    mCurrCharacters = *( getStringPtr( nodePtr->children->content ) );
+    mCurrCharacters += *( getStringPtr( nodePtr->children->content ) );
     return &mCurrCharacters;
 }
 
@@ -674,7 +674,7 @@ void XmlParser::OnCharacters( void* ctx, const xmlChar* ch, int len )
 {
     if ( len > 0 ) {
         XmlParser* xp       = static_cast< XmlParser* >( ctx );
-        xp->mCurrCharacters = string( (char*)ch, len );
+        xp->mCurrCharacters += string( (char*)ch, len );
     }
 }
 

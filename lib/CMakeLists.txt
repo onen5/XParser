@@ -1,18 +1,18 @@
 cmake_minimum_required(VERSION 3.14)
 
 # set the project name
-project(XParser VERSION 0.0.2)
+project(XParser VERSION 0.0.3)
 
 set(CMAKE_CXX_STANDARD 17)
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 8.1.0)
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 8.1.0)
         message(FATAL_ERROR "GCC version must be at least 8.1.0!  You are on (${CMAKE_CXX_COMPILER_ID}) v(${CMAKE_CXX_COMPILER_VERSION})")
     endif()
-# elseif ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
-#     if (CMAKE_CXX_COMPILER_VERSION VERSION_LESS 13.0.0)
-#         message(FATAL_ERROR "Clang version must be at least 13.0.0!  You are on (${CMAKE_CXX_COMPILER_ID}) v(${CMAKE_CXX_COMPILER_VERSION})")
-#     endif()
+elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 13.0.0)
+        message(FATAL_ERROR "Clang version must be at least 13.0.0!  You are on (${CMAKE_CXX_COMPILER_ID}) v(${CMAKE_CXX_COMPILER_VERSION})")
+    endif()
 else()
     message(WARNING "You are using an unsupported compiler! Compilation has only been tested with Clang and GCC.")
 endif()
@@ -54,7 +54,8 @@ if(UNIX)
         ${OPTNFLAG}
     )
     set(CMAKE_SHARED_LINKER_FLAGS "-lxml2")
-    #-Wl,-soname,${SONAME} 
+
+# -Wl,-soname,${SONAME}
 else()
     add_compile_options(/W4 /WX)
 endif()
@@ -63,11 +64,12 @@ endif()
 add_library(xparser SHARED ${xparser_src})
 
 # install target
-if ("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
-	install(TARGETS xparser DESTINATION lib64)
+if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
+    install(TARGETS xparser DESTINATION lib64)
 else()
-	install(TARGETS xparser DESTINATION lib)
+    install(TARGETS xparser DESTINATION lib)
 endif()
+
 install(FILES ${xparser_hdr} DESTINATION include/xparser)
 
 macro(print_all_variables)
@@ -78,5 +80,5 @@ macro(print_all_variables)
     message(STATUS "CMAKE_CXX_COMPILER_VERSION=${CMAKE_CXX_COMPILER_VERSION}")
     message(STATUS "CMAKE_SYSTEM_PROCESSOR=${CMAKE_SYSTEM_PROCESSOR}")
 endmacro()
-print_all_variables()
 
+print_all_variables()
