@@ -66,6 +66,8 @@ add_library(xparser SHARED ${xparser_src})
 # install target
 if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
     install(TARGETS xparser DESTINATION lib64)
+elseif("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "aarch64")
+    install(TARGETS xparser DESTINATION lib64)
 else()
     install(TARGETS xparser DESTINATION lib)
 endif()
