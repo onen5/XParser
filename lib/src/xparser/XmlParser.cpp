@@ -44,64 +44,6 @@ XmlParser::XmlParser() :
 
 XmlParser::~XmlParser() { }
 
-/**
- * ConvertInput: *** taken from xmlwriter.c example
- * @in: string in a given encoding
- * @encoding: the encoding used
- *
- * Converts @in into UTF-8 for processing with libxml2 APIs
- *
- * Returns the converted UTF-8 string, or nullptr in case of error.
- */
-xmlChar* XmlParser::convertInput( const char* in, const char* encoding )
-{
-    xmlChar* out;
-    int size;
-    int out_size;
-    int temp;
-    xmlCharEncodingHandlerPtr handler;
-
-    if ( in == 0 ) {
-        return 0;
-    }
-
-    handler = xmlFindCharEncodingHandler( encoding );
-
-    if ( !handler ) {
-        printf( "XmlParser::convertInput: no encoding handler found for '%s'\n", encoding ? encoding : "" );
-        return 0;
-    }
-
-    size     = (int)strlen( in ) + 1;
-    out_size = size * 2 - 1;
-    out      = (uint8_t*)xmlMalloc( (size_t)out_size );
-
-    if ( out != 0 ) {
-        temp    = size - 1;
-        int ret = handler->input( out, &out_size, (const xmlChar*)in, &temp );
-        if ( ( ret < 0 ) || ( temp - size + 1 ) ) {
-            if ( ret < 0 ) {
-                printf( "XmlParser::convertInput: conversion wasn't successful.\n" );
-            }
-            else {
-                printf( "XmlParser::convertInput: conversion wasn't successful. converted: %i octets.\n", temp );
-            }
-
-            xmlFree( out );
-            out = 0;
-        }
-        else {
-            out             = (uint8_t*)xmlRealloc( out, out_size + 1 );
-            out[ out_size ] = 0; /*null terminating out */
-        }
-    }
-    else {
-        printf( "XmlParser::convertInput: no mem\n" );
-    }
-
-    return out;
-}
-
 const string& XmlParser::getFileName() const
 {
     return mFilename;
@@ -495,14 +437,31 @@ bool XmlParser::parseXmlDoc( xmlDoc* doc )
 
 bool XmlParser::parseXmlStr( char* xStr, long fsize )
 {
-    xmlSAXHandler saxHandler;
-    make_sax_handler( &saxHandler );
+    xmlSAXHandler saxh;
+    make_sax_handler( &saxh );
 
-    int result = xmlSAXUserParseMemory( &saxHandler, this, xStr, fsize );
-    if ( result != 0 ) {
+    auto ctxt = xmlCreateMemoryParserCtxt(xStr, fsize);
+
+    if (ctxt == nullptr) {
         XML_ERROR( "Problem parsing file:" << getFileName() );
     }
+
+    // Allocate and initialize user data
+    ParserState state;
+    state.element_count = 0;
+
+    // Assign the user data and the custom SAX handler to the context
+    ctxt->_private = &state; // user_data is passed to all callbacks
+    ctxt->sax = &saxh;
+
+    xmlParseDocument(ctxt);
+
+    // Free the parser context memory
+    xmlFreeParserCtxt(ctxt);
+
+    // Cleanup the parser global variables (optional, typically at program exit)
     xmlCleanupParser();
+
     return true;
 }
 
@@ -654,7 +613,7 @@ bool XmlParser::inUserHandler() const
 
 void XmlParser::setUserHandlerObject( std::shared_ptr< void >&& obj )
 {
-    mUserHandlerObject = move( obj );
+    mUserHandlerObject = std::move( obj );
 }
 
 void XmlParser::make_sax_handler( xmlSAXHandler* saxHandler )

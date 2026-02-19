@@ -1,3 +1,9 @@
+Version 0.0.4
+=============================
+
+	- Support latest libxml2 (2.15.*)
+	- Removal of `convertInput` file in favor of native options
+
 Version 0.0.3
 =============================
 

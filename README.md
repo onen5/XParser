@@ -5,9 +5,9 @@ A modern wrapper around that which is libxml2.  Created mostly at a time when no
 ## Dependencies
 1. libmxl2,  *see [www.xmlsoft.org](http://www.xmlsoft.org/)
 
-1. Install Cmake 3.14 (or later) *see [cmake.org](https://cmake.org/)
+1. Install Cmake 3.30.0 (or later) *see [cmake.org](https://cmake.org/)
 
-1. Install GCC 8.1 (or later) *see [gcc.gnu.org](https://gcc.gnu.org/)
+1. Install GCC 13.2.0 (or later) *see [gcc.gnu.org](https://gcc.gnu.org/)
 
 ## Setup
 1. Install all dependecies on your machine.
@@ -25,9 +25,14 @@ A modern wrapper around that which is libxml2.  Created mostly at a time when no
 
     Other options to pass may include
 
-    > `-DCMAKE_CXX_STANDARD=17`
+    > `-DCMAKE_CXX_STANDARD=20`
 
     > `-DCMAKE_INSTALL_PREFIX=<path to where you want the SO file to go>`
+
+    ### Example build with on a mac with home brew.
+
+    > cmake -S . -B ./_build -DCMAKE_CXX_FLAGS="-isystem /opt/homebrew/opt/libxml2/include/libxml2" -DCMAKE_CXX_COMPILER="/opt/homebrew/Cellar/gcc/15.2.0_1/bin/g++-15" -DCMAKE_CXX_STANDARD=20
+
 
 1. Build the library
     ```

@@ -30,13 +30,17 @@ typedef std::unordered_map< std::string, std::unique_ptr< std::string > > xParse
 
 namespace xparser {
 
+// Define a structure to hold user data (e.g., parser state)
+typedef struct {
+    int element_count;
+    // other data you need to pass to callbacks
+} ParserState;
+
 class XmlParser {
   public:
     XmlParser();
     XmlParser( const std::string& );
     virtual ~XmlParser();
-
-    static xmlChar* convertInput( const char*, const char* );
 
     std::string getString( const xmlChar* ) const;
     std::string getString( const xmlChar*, int len ) const;

@@ -1,13 +1,13 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.23)
 
 # set the project name
 project(calendar-example VERSION 1.0)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")
-    if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 8.1.0)
-        message(FATAL_ERROR "GCC version must be at least 8.1.0!  You are on (${CMAKE_CXX_COMPILER_ID}) v(${CMAKE_CXX_COMPILER_VERSION})")
+    if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 13.2.0)
+        message(FATAL_ERROR "GCC version must be at least 13.2.0!  You are on (${CMAKE_CXX_COMPILER_ID}) v(${CMAKE_CXX_COMPILER_VERSION})")
     endif()
 elseif("${CMAKE_CXX_COMPILER_ID}" STREQUAL "AppleClang")
     if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 13.0.0)
