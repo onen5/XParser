@@ -10,7 +10,7 @@ A modern wrapper around that which is libxml2.  Created mostly at a time when no
 1. Install GCC 13.2.0 (or later) *see [gcc.gnu.org](https://gcc.gnu.org/)
 
 ## Setup
-1. Install all dependecies on your machine.
+1. Install all dependencies on your machine.
 
 1. Build the Makefile
     ```
@@ -20,7 +20,7 @@ A modern wrapper around that which is libxml2.  Created mostly at a time when no
     OR, if your environment does not automatically pick up the libxml or the g++, then consider running like this:
 
     ```
-    cd lib && cmake -S . -B ./_build -DCMAKE_CXX_FLAGS="-isystem <path to libxml2>/include/libxml2" -DCMAKE_CXX_COMPILER=<path to g++>/bin/g++
+    cd lib && cmake -S . -B ./_build -DCMAKE_CXX_COMPILER=<path to g++>/bin/g++ -DLIBXML2_INCLUDE_DIR="<path to libmxl2>/include/libxml2" -DLIBXML2_LIBRARY_DIR="<path to libmxl2>/lib"
     ```
 
     Other options to pass may include
@@ -31,7 +31,7 @@ A modern wrapper around that which is libxml2.  Created mostly at a time when no
 
     ### Example build with on a mac with home brew.
 
-    > cmake -S . -B ./_build -DCMAKE_CXX_FLAGS="-isystem /opt/homebrew/opt/libxml2/include/libxml2" -DCMAKE_CXX_COMPILER="/opt/homebrew/Cellar/gcc/15.2.0_1/bin/g++-15" -DCMAKE_CXX_STANDARD=20
+    > cmake -S . -B ./_build  -DCMAKE_CXX_COMPILER="/opt/homebrew/Cellar/gcc/15.2.0_1/bin/g++-15" -DCMAKE_CXX_STANDARD=20 -DLIBXML2_INCLUDE_DIR="/opt/homebrew/opt/libxml2/include/libxml2" -DLIBXML2_LIBRARY_DIR="/opt/homebrew/opt/libxml2/lib"
 
 
 1. Build the library
@@ -53,7 +53,7 @@ You can build a test example
     OR, if your environment does not automatically pick up the libxml or the g++, then consider running like this:
 
     ```
-    cd example && cmake -S . -B ./_build -DCMAKE_CXX_FLAGS="-isystem <path to libxml2>/include/libxml2" -DCMAKE_CXX_COMPILER=<path to g++>/bin/g++
+    cd example && cmake -S . -B ./_build -DCMAKE_CXX_COMPILER=<path to g++>/bin/g++ -DLIBXML2_INCLUDE_DIR="<path to libmxl2>/include/libxml2" -DLIBXML2_LIBRARY_DIR="<path to libmxl2>/lib"
     ```
 
 1. Build the example executable

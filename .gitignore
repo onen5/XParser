@@ -1,7 +1,7 @@
 .history/
 .vscode/
 
-_build/
+build_*/
 
 bazel-bin
 bazel-out

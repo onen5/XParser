@@ -53,7 +53,7 @@ if(UNIX)
         -v
         ${OPTNFLAG}
     )
-    set(CMAKE_SHARED_LINKER_FLAGS "-lxml2")
+#    set(CMAKE_SHARED_LINKER_FLAGS "-lxml2")
 
 # -Wl,-soname,${SONAME}
 else()
@@ -61,7 +61,34 @@ else()
 endif()
 
 # add library
+set(LIBXML2_INCLUDE_DIR "" CACHE PATH "Path to libxml2 include dir")
+set(LIBXML2_LIBRARY_DIR "" CACHE PATH "Path to libxml2 library dir")
+
 add_library(xparser SHARED ${xparser_src})
+
+# include dir (use provided value if set, otherwise fall back to inc/)
+if(LIBXML2_INCLUDE_DIR)
+  target_include_directories(xparser PRIVATE "${LIBXML2_INCLUDE_DIR}")
+endif()
+
+# link to the specific libxml2
+if(UNIX)
+  if(LIBXML2_LIBRARY_DIR)
+    find_library(LIBXML2_LIBRARIES NAMES xml2
+      PATHS "${LIBXML2_LIBRARY_DIR}" NO_DEFAULT_PATH
+    )
+  endif()
+
+  if(NOT LIBXML2_LIBRARIES)
+    find_library(LIBXML2_LIBRARIES NAMES xml2)
+  endif()
+
+  if(NOT LIBXML2_LIBRARIES)
+    message(FATAL_ERROR "Could not find libxml2 (libxml2.so) to link")
+  endif()
+
+  target_link_libraries(xparser PRIVATE "${LIBXML2_LIBRARIES}")
+endif()
 
 # install target
 if("${CMAKE_SYSTEM_PROCESSOR}" STREQUAL "x86_64")
